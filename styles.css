@@ -27,7 +27,13 @@ p {
 a {
     text-decoration: none;
     position: relative;
+    transition: opacity 300ms ease;
 }
+
+a:hover {
+    opacity: 0.7;
+}
+
 
 .link__hover-effect:after { 
     content: "";
@@ -39,8 +45,12 @@ a {
     transition: all 500ms ease;
 }
 
-.link__hover-effect--white:white {
+.link__hover-effect--white:after {
     background-color: #fff;
+}
+
+.link__hover-effect--black:after {
+    background-color: #000;
 }
 
 .link__hover-effect:hover:after {
@@ -68,6 +78,7 @@ li {
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
+    padding: 0 12px;
 }
 
 .text--purple {
@@ -93,7 +104,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
-    pad: 0 12px;
+    padding: 0 12px;
 }
 
 .nav__link--list {
@@ -155,6 +166,22 @@ nav {
     overflow: hidden;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 1.6);
     margin-bottom: 28px;
+    animation: animate-profile-picture 800ms 200ms backwards;
+}
+
+
+@keyframes animate-profile-picture {
+    0% {
+        transform: scale(0);
+    }
+
+    80% {
+        transform: scale(1.1)
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 .about-me__picture {
@@ -166,22 +193,35 @@ transform: scale(1.5);
 
 .about-me__info--title {
     margin-bottom: 16px;
-}
-
-.wave {
-    display: inline-block;
-    animation: animate-wave 500ms infinite ease-in-out;
+    animation: fade-up 650ms 400ms backwards;
 }
 
 .about-me__info--para {
     font-size: 20px;
     margin-bottom: 28px;
+    animation: fade-up 650ms 600ms backwards;
 }
 
 .about-me__link {
     font-size: 28px;
     color: black;
     padding: 0 16px
+}
+
+.about-me__links {
+    animation: fade-up 650ms 800ms backwards;
+}
+
+@keyframes fade-up {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+}
+
+100% {
+    opacity: 1;
+    transform: translateY(0px);
+}
 }
 
 .about-me__img--container {
@@ -193,6 +233,35 @@ transform: scale(1.5);
 
 .about-me__img {
     width: 100%;
+    animation: fade-in 1200ms 800ms backwards; 
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+}
+
+100% {
+    opacity: 1;
+}
+}
+
+.wave {
+    display: inline-block;
+    animation: animate-wave 500ms infinite ease-in-out;
+}
+
+@keyframes animate-wave {
+    0% {
+        transform: rotate(0);
+    }
+
+    50% {
+        transform: rotate(30deg);
+    }
+    100% {
+        transform: rotate(0);
+    }
 }
 
 /* TECH STACK */
@@ -389,12 +458,72 @@ footer {
     opacity: 1;
 }
 
-.footer__social--link,
-.footer__copyright, 
-.footer__logo--popper {
-    color: #fff;
-}
-
 .link__hover-effect--white:after {
     background-color: #fff;
+}
+
+/* Small phone, tablets, large smart phones */
+
+@media (max-width: 768px) {
+    nav { height: 68px;}
+}
+
+h1 {
+    font-size: 28px;
+}
+
+.about-me__info--para {
+    font-size: 18px;
+}
+
+.language {
+    width: calc(100%/2);
+}
+
+.project__description--para,
+.project__description--sub-title {
+    font-size: 14px;
+}
+
+.project__description {
+    left: 30px;
+    padding-right: 30px;
+}
+
+.project__description--title {
+    font-size: 28px;  
+}
+
+/* Small phones */
+
+@media (max-width: 480px) {
+    .nav__link:not(:last-child) {
+        display: none;
+    }
+
+    .project__description {
+        padding: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    .project__description--para {
+        display: none;
+    }
+
+    .project__description--links {
+        display: flex;
+        justify-content: center;
+    }
+
+.project__description--title {
+    font-size: 32px;
+    line-height: 1;
+    text-align: center;
+}
+
+.project__description--sub-title {
+    text-align: center;
+    margin: 12px 0;
+}
 }
