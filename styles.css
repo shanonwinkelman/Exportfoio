@@ -466,7 +466,6 @@ footer {
 
 @media (max-width: 768px) {
     nav { height: 68px;}
-}
 
 h1 {
     font-size: 28px;
@@ -492,6 +491,7 @@ h1 {
 
 .project__description--title {
     font-size: 28px;  
+}
 }
 
 /* Small phones */
